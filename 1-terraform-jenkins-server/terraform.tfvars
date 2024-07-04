@@ -1,5 +1,5 @@
-vpc_cidr_block      = "10.0.0.0/16"
-subnet_cidr_block   = "10.0.10.0/24"
+vpc_cidr_block      = "172.31.0.0/16"
+subnet_cidr_block   = "172.31.16.0/20"
 availability_zone   = "us-west-2"
 env_prefix          = "dev"
-instance_type       = "t2.small"
+instance_type       = "t2.micro"
