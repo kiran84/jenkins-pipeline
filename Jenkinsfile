@@ -32,15 +32,7 @@ pipeline {
                 }
             }
         }
-        stage("apply") {
-            steps {
-                script {
-                    dir('2-terraform-eks-deployment') {
-                        sh "terraform apply -auto-approve"
-                    }
-                }
-            }
-        }
+       
         stage("Deploy to EKS") {
             steps {
                 script {
