@@ -5,44 +5,17 @@ pipeline {
         AWS_DEFAULT_REGION = "us-west-2"
     }
     stages {
-        stage("Initialize ") {
-            steps {
-                script {
-                    dir('2-terraform-eks-deployment') {
-                        sh "terraform init"
-                    }
-                }
-            }
-        }
-        stage("Validate") {
-            steps {
-                script {
-                    dir('2-terraform-eks-deployment') {
-                        sh "terraform validate"
-                    }
-                }
-            }
-        }
-        stage("plan") {
-            steps {
-                script {
-                    dir('2-terraform-eks-deployment') {
-                        sh "terraform plan"
-                    }
-                }
-            }
-        }
-       
-        stage("Deploy to EKS") {
+        stage("Delete from EKS") {
             steps {
                 script {
                     dir('kubernetes') {
                         sh "aws eks update-kubeconfig --name my-eks-cluster"
-                        sh "kubectl apply -f nginx-deployment.yaml"
-                        sh "kubectl apply -f nginx-service.yaml"
+                        sh "kubectl delete -f nginx-deployment.yaml"
+                        sh "kubectl delete -f nginx-service.yaml"
                     }
                 }
             }
         }
+        
     }
 }
