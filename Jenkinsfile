@@ -5,12 +5,11 @@ pipeline {
         AWS_DEFAULT_REGION = "us-west-2"
     }
     stages {
-        stage("Delete to EKS") {
+        stage("destroy") {
             steps {
                 script {
-                    dir('kubernetes') {
-                        sh "kubectl delete -f nginx-deployment.yaml"
-                        sh "kubectl delete -f nginx-service.yaml"
+                    dir('2-terraform-eks-deployment') {
+                        sh "terraform destroy -auto-approve"
                     }
                 }
             }
