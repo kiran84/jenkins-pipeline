@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     dir('2-terraform-eks-deployment') {
-                        sh "terraform apply -auto-approve"
+                        sh "terraform destroy -auto-approve"
                     }
                 }
             }
