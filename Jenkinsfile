@@ -5,7 +5,7 @@ pipeline {
         AWS_DEFAULT_REGION = "us-west-2"
     }
     stages {
-        stage("apply") {
+        stage("destroy") {
             steps {
                 script {
                     dir('2-terraform-eks-deployment') {
